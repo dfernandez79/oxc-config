@@ -1,0 +1,51 @@
+{
+  "name": "@diegoux/oxc-config",
+  "version": "0.1.0",
+  "description": "Shared oxlint and oxfmt configuration",
+  "license": "MIT",
+  "author": "Diego Fernandez",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    "./oxlint": {
+      "types": "./dist/oxlint.d.ts",
+      "default": "./dist/oxlint.js"
+    },
+    "./oxfmt": {
+      "types": "./dist/oxfmt.d.ts",
+      "default": "./dist/oxfmt.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
+    "prepack": "bun run build"
+  },
+  "devDependencies": {
+    "oxfmt": "0.70.0",
+    "oxlint": "1.85.0",
+    "typescript": "7.0.2"
+  },
+  "peerDependencies": {
+    "oxfmt": ">=0.67.0",
+    "oxlint": ">=1.82.0"
+  },
+  "peerDependenciesMeta": {
+    "oxfmt": {
+      "optional": true
+    },
+    "oxlint": {
+      "optional": true
+    }
+  }
+}
